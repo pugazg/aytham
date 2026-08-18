@@ -296,3 +296,65 @@ Nannūl should be added next as a **later comparative grammar layer** for catego
 Sangam literature should then be used primarily as **attested usage/context evidence**, especially before borrowing from பொருளதிகாரம் concepts such as திணை.
 
 Neither later grammar nor literature may be silently back-projected into Tolkāppiyam.
+
+---
+
+## D-0020 — Nannūl citations are edition-aware
+
+**Date:** 2026-08-18  
+**Status:** Accepted
+
+The same action-frame rule beginning `செய்பவன் கருவி நிலம் செயல் காலம் / செய்பொருள் ஆறும் தருவது வினையே` is numbered **319** in the Mayilaināthar/U. Vē. Cā. TVA presentation and **320** in other TVA Nannūl presentations.
+
+Aytham must therefore preserve:
+
+- edition/commentary identity;
+- nūṟpā incipit;
+- number in that edition;
+- printed page where available;
+- source URL.
+
+Never silently normalize conflicting numbering into one universal Nannūl number.
+
+---
+
+## D-0021 — ActionFrame relations record provenance of interpretation
+
+**Date:** 2026-08-18  
+**Status:** Experimental direction
+
+Commentarial study strengthens the distinction between overt surface material and resolved semantic relations.
+
+A provisional Aytham ActionFrame relation should therefore be able to record an origin such as:
+
+```text
+explicit
+inferred
+derived
+contextual
+```
+
+The goal is not to maximize omission. The goal is that any non-explicit relation remains inspectable, uniquely justified, and diagnosable.
+
+If more than one valid semantic frame can be resolved, compilation should require disambiguation rather than silently guessing.
+
+---
+
+## D-0022 — Punarcci research becomes boundary-transformation research
+
+**Date:** 2026-08-18  
+**Status:** Experimental direction
+
+Nannūl and Mayilaināthar's commentary reinforce a boundary-oriented reading: two forms meet under a semantic relation and may remain natural/unchanged or undergo rule-governed modification.
+
+Aytham will therefore test composition outcomes such as:
+
+```text
+DIRECT
+TRANSFORMED
+REQUIRES_ADAPTOR
+AMBIGUOUS
+REJECTED
+```
+
+This is a modern Aytham design inspired by the structural idea of rule-governed joining. It is not a claim that Tamil grammatical punarcci is software composition.
