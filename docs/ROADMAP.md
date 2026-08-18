@@ -37,16 +37,17 @@ Prototype on paper/data structures:
 
 1. `peyar` — denotable entity/value;
 2. `vinai` — transformation/action/effect;
-3. `uri` — qualification/refinement;
+3. `uri` — qualification/refinement, now also being tested as evidence-bearing contextual knowledge;
 4. role relation inspired by `vēṟṟumai`;
 5. composition law inspired by `puṇarcci`;
-6. resolved contextual meaning (`poruḷ`, terminology still reviewable).
+6. resolved contextual meaning (`poruḷ`, terminology still reviewable);
+7. semantic lineage/versioning for facts established about changing values.
 
 Required examples:
 
-- bank/account transfer;
-- validated data pipeline;
-- state/protocol transition;
+- bank/account transfer — **Experiment 001 recorded**;
+- validated data pipeline — **Experiment 002 recorded**;
+- state/protocol transition — next semantic stress test;
 - pure vs effectful transformation;
 - at least one Tamil-text/Unicode example.
 
@@ -56,6 +57,8 @@ Exit criteria:
 - comparison with Rust/TypeScript/Python or another relevant language is documented;
 - concepts that merely rename existing constructs are removed or narrowed;
 - a small-step or equivalent executable semantic description is possible.
+
+**Current status: ACTIVE in parallel with Phase 0 research.**
 
 ---
 
@@ -69,7 +72,7 @@ Specify:
 - binding/identity;
 - semantic categories;
 - role system;
-- qualification/refinement system;
+- qualification/refinement/evidence system, if Experiment 002 survives comparison;
 - transformations/effects;
 - composition;
 - branching/choice;
@@ -139,7 +142,7 @@ Candidate implementation languages should be compared before selection.
 The interpreter should expose internal reasoning useful for research, for example:
 
 ```text
-form → category → role → qualification → effect → composition → result
+form → category → role → qualification/evidence → effect → composition → result
 ```
 
 Exit criteria:
@@ -159,8 +162,10 @@ Work may include:
 
 - formal grammar;
 - type/role judgments;
+- qualification/evidence judgments;
 - effect rules;
 - composition laws;
+- lineage/preservation/invalidation rules;
 - soundness properties where applicable;
 - property-based tests;
 - fuzzing;
@@ -220,7 +225,7 @@ Targets may include:
 
 Research question:
 
-> How are Aytham roles, uri constraints, and effects represented when crossing into languages that do not understand them?
+> How are Aytham roles, uri qualifications/evidence, and effects represented when crossing into languages that do not understand them?
 
 Exit criteria:
 
@@ -239,8 +244,9 @@ Build:
 - formatter;
 - syntax highlighting;
 - LSP;
-- hover showing category/role/uri/effect;
+- hover showing category/role/uri/evidence/effect;
 - semantic diagnostics;
+- provenance trace for established qualifications;
 - rename/refactor;
 - test runner;
 - documentation generator;
@@ -265,7 +271,7 @@ Initial library candidates:
 - JSON;
 - testing.
 
-The standard library should be the strongest demonstration of role-safe, qualification-aware, effect-explicit API design.
+The standard library should be the strongest demonstration of role-safe, qualification-aware, evidence-aware, effect-explicit API design.
 
 ---
 
@@ -288,10 +294,11 @@ Only after the language core is stable:
 
 # Near-term work queue
 
-1. Deepen prior-art research.
-2. Build a concept-by-concept source notebook for வேற்றுமை, பெயர், வினை, இடை, உரி, புணர்ச்சி.
-3. Design the role-safe transfer model without syntax.
-4. Compare it against Rust newtypes, TypeScript branded types, named arguments, refinement types, and capability/effect systems.
-5. Design a second example around validated data flow.
+1. Deepen prior-art research, especially refinement types, typestate, proof-carrying data/code, effect/capability systems, provenance systems, and dataflow languages.
+2. Build a concept-by-concept source notebook for வேற்றுமை, பெயர், வினை, இடை, உரி, புணர்ச்சி from the controlling Tolkāppiyam source and clearly separate source meaning from Aytham invention.
+3. **Experiment 001 complete as a paper design:** role-safe transfer model. Next: formal comparison against conventional alternatives.
+4. **Experiment 002 complete as a paper design:** validated data flow. Next: test evidence-bearing uri, lineage, preservation/invalidation, and path sensitivity against established techniques.
+5. Design **Experiment 003 — state/protocol transition** only after enough comparison work is recorded to prevent blindly recreating typestate.
 6. Decide whether `poruḷ` is the right Aytham term for resolved computational meaning.
-7. Only after these: draft `SPEC_0_1.md`.
+7. Draft a minimal machine-readable semantic graph schema shared by Experiments 001–003.
+8. Only after these: draft `SPEC_0_1.md`.
