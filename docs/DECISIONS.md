@@ -175,7 +175,7 @@ Aytham must demonstrate a benefit over branded/newtypes, refinement types, types
 ## D-0012 — `uri` may carry evidence and provenance
 
 **Date:** 2026-08-18  
-**Status:** Experimental
+**Status:** Experimental; terminology reopened by D-0015
 
 For Experiment 002, `uri` is tested as more than a Boolean property or nominal tag.
 
@@ -206,3 +206,93 @@ Experiment 002 therefore tests a versioned/lineage model in which a meaning-chan
 - invalidate qualifications whose evidence no longer applies.
 
 This must be compared against SSA, immutability, typestate, refinement typing, and proof-carrying approaches before adoption.
+
+---
+
+## D-0014 — Experiment 002 survives comparison only in narrowed form
+
+**Date:** 2026-08-18  
+**Status:** Experimental direction accepted
+
+Comparative research found strong prior art for every major individual ingredient:
+
+- refinements;
+- typestate;
+- dependent proofs;
+- proof-carrying evidence;
+- effect typing;
+- SSA/value lineage;
+- provenance;
+- language-integrated provenance.
+
+Therefore Aytham must not claim ingredient novelty.
+
+The surviving hypothesis is the **unified programmer-facing semantic graph** in which role, qualification/evidence, provenance, lineage, effects, and composition can participate in one resolved meaning model and one diagnostic/tooling model.
+
+This combination must still prove usefulness and coherence.
+
+---
+
+## D-0015 — `uri = refinement type` is reopened
+
+**Date:** 2026-08-18  
+**Status:** Reopened / research required
+
+Direct reading of the opening of Tolkāppiyam உரியியல் shows a broader lexical-semantic and contextual treatment than the convenient modern label “qualifier” suggests.
+
+Therefore:
+
+- do not define historical `uri` as a refinement predicate;
+- use the neutral phrase **qualification claim** in paper semantics;
+- `uri` may remain a research alias;
+- do not freeze `uri` as a keyword or formal type-system construct before source/commentary/Nannūl comparison.
+
+Experiment 002's evidence-backed qualification idea remains valid as **AYTHAM DESIGN** even if the final Tamil term changes.
+
+---
+
+## D-0016 — `idai` is researched as mediation, not generic control flow
+
+**Date:** 2026-08-18  
+**Status:** Experimental direction
+
+The opening of இடையியல் emphasizes operation with பெயர்/வினை and relational/contextual functions.
+
+Aytham therefore should not use `idai` as a decorative name for `if`, pipes, semicolons, or arbitrary control operators.
+
+Research `idai` instead as a possible model of **semantic mediation/connection** whose relation contributes meaning between surrounding forms.
+
+---
+
+## D-0017 — Early Eccaviyal → inference mapping is withdrawn
+
+**Date:** 2026-08-18  
+**Status:** Withdrawn pending source study
+
+The structured corpus gloss “Ellipsis” is too narrow to justify mapping the whole எச்சவியல் to implicit arguments or compiler inference. Direct source reading shows the iyal opens with broader lexical classification and contains diverse residual word-grammar material.
+
+No Eccaviyal-inspired inference feature is active until the full iyal and commentary are reviewed.
+
+---
+
+## D-0018 — All 27 Tolkāppiyam iyals must be surveyed before core terminology freezes
+
+**Date:** 2026-08-18  
+**Status:** Accepted
+
+Aytham will not select only convenient Tolkāppiyam concepts. The complete 27-iyal survey is part of the research baseline, including explicit HOLD decisions where an analogy would be forced.
+
+This reduces selection bias and prevents core language terminology from being frozen from a partial reading.
+
+---
+
+## D-0019 — Nannūl enters before Sangam literature in the next comparison stage
+
+**Date:** 2026-08-18  
+**Status:** Accepted research order
+
+Nannūl should be added next as a **later comparative grammar layer** for categories such as relation/case, word class, joining, residual constructions, and qualification-related treatment.
+
+Sangam literature should then be used primarily as **attested usage/context evidence**, especially before borrowing from பொருளதிகாரம் concepts such as திணை.
+
+Neither later grammar nor literature may be silently back-projected into Tolkāppiyam.
