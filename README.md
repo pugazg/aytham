@@ -108,17 +108,31 @@ Direct source reading has already corrected several early assumptions:
 - `punarcci` is studied as a model of rule-governed boundaries rather than translated phonology;
 - பொருளதிகாரம் concepts have a deliberately higher bar because forced analogy risk is especially high.
 
-## Nannūl comparison
+The first-pass 27-iyal survey is retained as research history; later corrections are recorded explicitly in `TOLKAPPIYAM_27_IYAL_SURVEY_ERRATA.md` rather than silently erasing earlier hypotheses.
 
-Nannūl has now entered the research set as a **later comparative grammar**, not as an authority to be back-projected into Tolkāppiyam.
+## Nannūl comparison and commentary
+
+Nannūl has entered the research set as a **later comparative grammar**, not as an authority to be back-projected into Tolkāppiyam.
 
 The first comparison strengthens three research directions:
 
 1. **action-centred relation frames**;
 2. **idai as mediation**;
-3. **composition systems with general, specialized, contextual, and extension rules**.
+3. **boundary-sensitive composition with general and context-dependent rules**.
 
-It also reinforces the need to keep `uri` and `eccam` terminology provisional.
+Commentarial study now includes two Tamil Virtual Academy sources supplied for the project:
+
+- **Mayilaināthar commentary**, TVA's `நன்னூல் மூலமும் மயிலைநாதருரையும்`;
+- **Śaṅkara Namaccivāyar's Virutti commentary revised by Sivajñāna Munivar**.
+
+The commentary pass adds two important requirements:
+
+- semantic relations should be able to record whether they were **explicit, inferred, derived, or contextual**;
+- Nannūl provenance must be **edition-aware**, because the same rule can carry different nūṟpā numbers across editions/commentarial traditions.
+
+For example, the opening punarcci definition appears as 150 in the Mayilaināthar/U. Vē. Cā. presentation but 151 in common TVA numbering, while the action-frame rule appears as 319 versus 320. Aytham therefore identifies source rules by **incipit + edition/commentary + local number + page/source**, never by bare number alone.
+
+`uri` and `eccam` terminology remain provisional.
 
 ## Sangam literature
 
@@ -181,8 +195,11 @@ docs/
     RESEARCH_QUESTIONS.md
     TOLKAPPIYAM_CONCEPT_MAP.md
     TOLKAPPIYAM_27_IYAL_SURVEY.md
+    TOLKAPPIYAM_27_IYAL_SURVEY_ERRATA.md
     TOLKAPPIYAM_SOURCE_NOTEBOOK_001.md
     NANNUL_COMPARATIVE_NOTEBOOK_001.md
+    NANNUL_COMMENTARY_NOTEBOOK_002.md
+    NANNUL_SOURCE_CONCORDANCE.md
     EXPERIMENT_002_COMPARATIVE_ANALYSIS.md
     SOURCE_EXPANSION_POLICY.md
 
@@ -205,12 +222,13 @@ docs/
 Current work:
 
 1. deepen the complete Sollatikāram source notebook;
-2. compare high-priority concepts with Nannūl and attributed commentaries;
+2. extend the Nannūl cross-edition concordance and commentarial comparison;
 3. extend prior-art comparison into semantic roles, case grammar, frame semantics, knowledge graphs, graph rewriting, and type-directed synthesis/planning;
 4. test whether an **action frame** is better than a conventional function signature for several unrelated programming problems;
 5. study Eḻuttatikāram composition-rule architecture;
 6. conduct a Poruḷatikāram anti-analogy review before borrowing contextual concepts;
-7. only then decide which Tamil technical terms belong in Specification 0.1.
+7. then introduce bounded Sangam literature as attested-usage/context evidence;
+8. only after these decide which Tamil technical terms belong in Specification 0.1.
 
 Success still requires at least one abstraction that proves measurably useful compared with conventional alternatives.
 
