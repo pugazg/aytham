@@ -147,3 +147,62 @@ Still open:
 LLVM, WebAssembly, C transpilation, custom bytecode/VM, or another backend must not drive early semantics.
 
 The first executable model should optimize for semantic clarity and conformance testing.
+
+---
+
+## D-0011 — Validated data flow is the second semantic stress test
+
+**Date:** 2026-08-18  
+**Status:** Accepted for experimentation
+
+Experiment 002 tests whether the model generalizes beyond semantic roles such as transfer source/destination.
+
+The test pipeline is:
+
+```text
+raw text
+→ ParseEmail
+→ syntactically valid email value
+→ VerifyOwnership
+→ ownership-verified email value
+→ SendSensitiveMessage
+```
+
+Aytham must demonstrate a benefit over branded/newtypes, refinement types, typestate, and related established techniques before this model can enter the specification.
+
+---
+
+## D-0012 — `uri` may carry evidence and provenance
+
+**Date:** 2026-08-18  
+**Status:** Experimental
+
+For Experiment 002, `uri` is tested as more than a Boolean property or nominal tag.
+
+A qualification may carry:
+
+- the claim being established;
+- the exact semantic subject/value;
+- the vinai that established it;
+- evidence or attestation where applicable;
+- scope/context;
+- freshness/validity.
+
+This is a hypothesis, not accepted language semantics. It must remain simple enough for ordinary programming and must be compared with proof/refinement/provenance systems.
+
+---
+
+## D-0013 — Semantic facts attach to value lineage, not variable names
+
+**Date:** 2026-08-18  
+**Status:** Experimental
+
+A fact established about one value must not silently transfer to a different value merely because the same variable/binding name is reused.
+
+Experiment 002 therefore tests a versioned/lineage model in which a meaning-changing vinai can:
+
+- establish qualifications;
+- preserve explicitly compatible qualifications;
+- invalidate qualifications whose evidence no longer applies.
+
+This must be compared against SSA, immutability, typestate, refinement typing, and proof-carrying approaches before adoption.
