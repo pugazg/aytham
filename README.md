@@ -1,61 +1,141 @@
 # ஆய்தம் · Aytham
 
-**A research-first project exploring whether Tamil grammatical thought can inspire a genuinely new programming-language model.**
+**A research-first project exploring whether Tamil grammatical thought can inspire a genuinely useful programming-language model.**
 
 > Status: **Research / pre-specification**
 >
-> No claim is yet made that Aytham is the first Tolkāppiyam-inspired programming language. Novelty claims remain provisional until prior-art research is substantially complete.
+> No claim is yet made that Aytham is the first Tolkāppiyam-inspired programming language. Novelty claims remain provisional until prior-art and source research are substantially complete.
 
 ## Core question
 
-Most Tamil programming-language projects make programming accessible through Tamil syntax, Tamil keywords, or Tamil identifiers while retaining a familiar imperative/procedural computational model.
+Most Tamil programming-language projects make programming accessible through Tamil syntax, Tamil keywords, or Tamil identifiers while retaining a familiar programming model.
 
-Aytham starts with a different question:
+Aytham asks a different question:
 
-> **Can concepts from Tamil grammatical thought—especially the structural worlds of எழுத்து (eḻuttu), சொல் (sol), and பொருள் (poruḷ)—help us design useful programming abstractions that are not merely English/C/Python concepts translated into Tamil?**
+> **Can Tamil grammatical thought help us decide which computational relationships a programming language should make explicit, rather than merely translating conventional programming vocabulary into Tamil?**
 
-The working hypothesis is not that Tolkāppiyam secretly describes computation, nor that its three major divisions map directly onto lexer → parser → semantic analyser. That would be an anachronistic and shallow reading.
+The project does **not** claim that Tolkāppiyam or Nannūl describes modern computation. Tamil grammatical sources are treated as design-research sources whose concepts must pass two independent tests:
 
-Instead, Aytham treats Tamil grammatical categories as a **design research source**. Every borrowed concept must pass two tests:
-
-1. **Historical honesty** — what does the Tamil source actually describe?
-2. **Computational usefulness** — does the inspired abstraction improve programming, rather than merely rename an existing construct?
+1. **Historical honesty** — what does the source actually describe?
+2. **Computational usefulness** — does the inspired abstraction make programming safer, clearer, more composable, or easier to reason about?
 
 ## Why ஆய்தம்?
 
 `ஃ` is a distinctive Tamil sign with a special structural place in the writing system. The project uses **Aytham / ஆய்தம்** as its working language name and `ஃ` as a possible visual identity.
 
-The name is currently a **working project identity**, not a declaration of trademark clearance.
+The name is a **working project identity**, not a declaration of trademark clearance.
 
-## Research direction
+## Current research model
 
-The first design hypothesis is a layered model:
+The early organizing frame remains useful:
 
 ```text
-source
-  ↓
 எழுத்து · eḻuttu
-well-formed computational signs and literal forms
-  ↓
+        ↓
 சொல் · sol
-composable computational forms
-  ↓
+        ↓
 பொருள் · poruḷ
-resolved meaning in context: value, role, constraint, effect, relation
-  ↓
-இயக்கம் · execution / evaluation
 ```
 
-This diagram is deliberately provisional. Aytham must not reduce Tolkāppiyam to modern compiler terminology.
+but it is **not** treated as a mapping to lexer → parser → semantic analyser.
 
-A second, potentially more distinctive research direction comes from the சொல்லதிகாரம் categories:
+Direct source study has also made the project more cautious about treating `பெயர் / வினை / இடை / உரி` as four modern programming categories. They are now research perspectives whose historical relationships must be understood before any terminology is frozen.
 
-- **பெயர் · peyar** — computational entities / denotable values
-- **வினை · vinai** — transformations, actions, or effects
-- **இடை · idai** — composition, connection, mediation, control
-- **உரி · uri** — qualification, refinement, constraints, properties
+The strongest current computational hypothesis is an **action-centred semantic relation graph**:
 
-A third direction investigates whether concepts such as **வேற்றுமை** can inspire role-aware argument relationships, and whether **புணர்ச்சி** can inspire checked composition rules. These are hypotheses to test, not predetermined features.
+```text
+                         action
+                           │
+          ┌────────────────┼────────────────┐
+          │                │                │
+   participant roles   circumstances   temporal context
+          │                │                │
+          └────────────────┼────────────────┘
+                           │
+                  qualification claims
+                    / evidence / scope
+                           │
+                    effects + lineage
+                           │
+                  checked composition
+```
+
+A transformation may therefore eventually be described by relationships such as:
+
+```text
+requires
+establishes
+preserves
+invalidates
+effects
+capabilities
+produces
+```
+
+This remains **paper semantics**, not accepted language architecture.
+
+### Current source-inspired research terms
+
+- **வேற்றுமை** — inspires research into first-class semantic role relations; Aytham roles are a modern invention, not grammatical cases copied into software.
+- **வினை** — inspires action/transformation research; direct Tolkāppiyam/Nannūl study shows the historical category is deeply connected with temporal and grammatical structure, so `vinai = function` is rejected.
+- **இடை** — currently researched as **semantic mediation/connection**, not as a Tamil label for `if`, pipes, punctuation, or generic control flow.
+- **உரி** — terminology is **reopened**. Experiment 002 uses the neutral modern term **qualification claim** because direct source study shows `uri` is broader than a simple refinement predicate.
+- **புணர்ச்சி** — inspires **boundary-sensitive checked composition**; it is not treated as a historical theory of software composition.
+- **பெயர்** — remains a research perspective for denotable semantic subjects/entities, not a frozen AST node type.
+
+## What prior-art comparison changed
+
+Experiment 002 was compared against refinement types, typestate, dependent types, proof-carrying approaches, effect systems, SSA/value lineage, provenance systems, and related work.
+
+The conclusion is deliberately conservative:
+
+> **Individual mechanism novelty is low.**
+
+The research opportunity is whether Aytham can make **role + qualification/evidence + provenance + lineage + effects + composition** one coherent programmer-facing meaning model, with unusually strong diagnostics and tooling.
+
+Combination alone does not establish novelty. It must demonstrate practical value.
+
+## What source study changed
+
+The project now surveys **all 27 Tolkāppiyam iyals**, rather than selecting only concepts that conveniently resemble programming.
+
+Direct source reading has already corrected several early assumptions:
+
+- `uri = refinement type` is no longer accepted;
+- `idai = generic control flow` is rejected;
+- the early `Eccaviyal → compiler inference` analogy is withdrawn pending full source study;
+- `vinai` is not equated with an arbitrary effectful function;
+- `punarcci` is studied as a model of rule-governed boundaries rather than translated phonology;
+- பொருளதிகாரம் concepts have a deliberately higher bar because forced analogy risk is especially high.
+
+## Nannūl comparison
+
+Nannūl has now entered the research set as a **later comparative grammar**, not as an authority to be back-projected into Tolkāppiyam.
+
+The first comparison strengthens three research directions:
+
+1. **action-centred relation frames**;
+2. **idai as mediation**;
+3. **composition systems with general, specialized, contextual, and extension rules**.
+
+It also reinforces the need to keep `uri` and `eccam` terminology provisional.
+
+## Sangam literature
+
+Sangam literature is planned as a different evidence layer:
+
+> **attested usage and contextual stress-testing**, especially before Aytham borrows anything from திணை or other பொருளதிகாரம் concepts.
+
+It will not be treated as another grammar manual or mined for attractive programming metaphors.
+
+Potential later uses include:
+
+- contextual interpretation;
+- participant/relation recovery;
+- explicit vs implicit evidence;
+- ambiguity;
+- tiṇai in actual literary usage;
+- genuinely Tamil computational example programs.
 
 ## What Aytham must NOT become
 
@@ -68,59 +148,83 @@ function → வினை
 print    → அச்சிடு
 ```
 
-Tamil keywords may eventually exist, but keyword translation is not the research contribution.
+Nor should it claim that modern programming concepts are directly present in ancient or medieval grammar.
 
-Aytham also must not claim that modern programming concepts are directly present in an ancient grammar. Any modern abstraction derived from a historical concept must be labelled as a **design interpretation**.
+Every Tamil-inspired feature must remain separable into:
+
+```text
+historical source
+commentarial / scholarly interpretation
+modern programming-language prior art
+Aytham design invention
+```
 
 ## Principles
 
 1. **Research before implementation.** Compiler code follows semantic clarity.
-2. **Tamil-inspired, not Tamil-decorated.** A borrowed Tamil concept must affect language behaviour or reasoning.
-3. **Source-grounded.** Historical claims require traceable sources.
-4. **No forced analogies.** If a Tolkāppiyam concept does not yield a useful programming abstraction, we do not use it.
-5. **Useful beyond novelty.** Aytham should eventually solve real programming problems.
-6. **Unicode-native.** Tamil text must be handled correctly as Unicode, including normalization and grapheme-aware diagnostics.
-7. **Tamil-first, interoperable.** A Tamil conceptual model must not isolate users from existing software ecosystems.
-8. **Explicit provenance.** Historical source, scholarly interpretation, and Aytham invention are kept separate.
-9. **Provisional originality claims.** Prior art must be documented before asserting novelty.
-10. **Readable errors are part of the language.** Diagnostics should explain both form and meaning, not expose only compiler internals.
+2. **Tamil-inspired, not Tamil-decorated.** A borrowed concept must affect reasoning or behaviour.
+3. **Source-grounded.** Historical claims require traceable evidence.
+4. **No forced analogies.** Attractive but weak mappings are explicitly held or rejected.
+5. **Useful beyond novelty.** Aytham must solve real programming problems.
+6. **Prior-art honest.** Established mechanisms are acknowledged rather than renamed as inventions.
+7. **Unicode-native.** Tamil source must receive correct normalization, grapheme-aware diagnostics, and mixed-script safety.
+8. **Tamil-first, interoperable.** A Tamil conceptual model must not isolate programmers from existing ecosystems.
+9. **Explicit provenance.** Source, commentary, modern scholarship, interpretation, and Aytham invention remain distinct.
+10. **Meaning-oriented diagnostics are part of the language.** Errors should explain missing relationships, evidence, effects, or composition conditions in domain terms.
 
-## Repository structure
+## Research map
 
 ```text
 docs/
   research/
     PRIOR_ART.md
     RESEARCH_QUESTIONS.md
+    TOLKAPPIYAM_CONCEPT_MAP.md
+    TOLKAPPIYAM_27_IYAL_SURVEY.md
+    TOLKAPPIYAM_SOURCE_NOTEBOOK_001.md
+    NANNUL_COMPARATIVE_NOTEBOOK_001.md
+    EXPERIMENT_002_COMPARATIVE_ANALYSIS.md
+    SOURCE_EXPANSION_POLICY.md
+
+  experiments/
+    001_ROLE_GRAPH_TRANSFER.md
+    002_VALIDATED_DATA_FLOW.md
+
   design/
     DESIGN_PRINCIPLES.md
     COMPUTATIONAL_MODEL.md
+
+  DECISIONS.md
   ROADMAP.md
 ```
 
-The repository will later grow to include a formal specification, examples, reference interpreter/compiler, tests, tooling, and standard library only after the research foundation is stable.
-
 ## Current milestone
 
-**Milestone 0 — Establish the research foundation**
+**Milestone 0 — Research foundation / paper semantics**
 
-Success means:
+Current work:
 
-- prior Tamil programming-language work is documented fairly;
-- Tolkāppiyam-derived concepts are separated from Aytham inventions;
-- at least one genuinely useful computational abstraction is demonstrated;
-- the language is not dependent on translated keywords for its identity;
-- a small semantic core can be specified before syntax is frozen.
+1. deepen the complete Sollatikāram source notebook;
+2. compare high-priority concepts with Nannūl and attributed commentaries;
+3. extend prior-art comparison into semantic roles, case grammar, frame semantics, knowledge graphs, graph rewriting, and type-directed synthesis/planning;
+4. test whether an **action frame** is better than a conventional function signature for several unrelated programming problems;
+5. study Eḻuttatikāram composition-rule architecture;
+6. conduct a Poruḷatikāram anti-analogy review before borrowing contextual concepts;
+7. only then decide which Tamil technical terms belong in Specification 0.1.
+
+Success still requires at least one abstraction that proves measurably useful compared with conventional alternatives.
 
 ## Source discipline
 
-The project should distinguish three evidence labels in research documents:
+Research records distinguish:
 
-- **SOURCE** — directly supported by a cited Tamil text / scholarly source;
-- **INTERPRETATION** — a reasoned reading or comparison;
-- **AYTHAM DESIGN** — a new programming-language abstraction inspired by, but not attributed to, the historical source.
+- **SOURCE** — directly supported by a cited primary text;
+- **COMMENTARY** — attributed traditional/commentarial interpretation;
+- **MODERN SCHOLARSHIP** — linguistic/computational/programming-language research;
+- **INTERPRETATION** — a reasoned comparison or reading;
+- **AYTHAM DESIGN** — a modern programming-language invention inspired by the research.
 
-This distinction is foundational to the project.
+Later sources such as Nannūl must never be silently projected backward into Tolkāppiyam.
 
 ## License
 
