@@ -1,406 +1,371 @@
 # Benchmark 001 — Verified Sensitive Email Workflow
 
-Status: **ACTIVE comparative benchmark**  
+Status: **ACTIVE comparative benchmark / orthogonal-facts gate completed provisionally**  
 Date started: 2026-08-23
 
-This benchmark is the first evidence gate after the Aytham direction reset.
+This is the first evidence gate after the Aytham direction reset.
 
-It compares the same programming problem in:
+It compares the same semantic problem in:
 
 1. TypeScript;
 2. Rust;
-3. Aytham Semantic Kernel Candidate.
+3. the Aytham Semantic Kernel Candidate.
 
-The purpose is **not** to make Aytham look different. The purpose is to determine whether its semantic contract model earns its complexity.
+The benchmark exists to **falsify weak Aytham claims**, not to make Aytham look different.
 
 ---
 
-# 1. Scenario
+## 1. Base scenario
 
 An application receives an email string and may send a sensitive message only after:
 
-1. the email syntax has been validated;
-2. ownership has been verified;
-3. the ownership verification applies to the correct account/scope;
-4. the verification is still fresh;
-5. the exact email value being sent is the value that was verified, or a transformation has explicitly preserved the verification;
-6. the caller possesses permission/capability to perform the network-send effect.
+1. syntax validation;
+2. ownership verification;
+3. correct verification account/scope;
+4. fresh verification;
+5. subject/value lineage has not invalidated the verification;
+6. a `network_send` capability is available.
 
-The benchmark must make invalid cases difficult or impossible to perform accidentally.
-
----
-
-# 2. Required semantic states
-
-## Raw input
+Required operations:
 
 ```text
 RawEmail
+   ↓ ParseEmail
+SyntaxValidEmail
+   ↓ VerifyOwnership
+ownership-verified email
+   ↓ SendSensitiveMessage
+DeliveryReceipt
 ```
 
-No email-specific semantic claim is established.
-
-## Syntax-valid email
-
-```text
-email_syntax_valid
-```
-
-This means only that the string satisfies the benchmark's email syntax rule.
-
-It does **not** imply ownership.
-
-## Ownership verification
-
-```text
-ownership_verified
-```
-
-The verification must carry at least:
-
-```text
-subject email value
-account/scope
-established_at
-expires_at
-evidence identifier
-```
-
-## Network-send capability
-
-Sensitive sending requires an explicit permission/capability representing:
-
-```text
-network_send
-```
-
-The capability model does not need to be cryptographically secure for this benchmark. It exists to compare whether the effect requirement is visible and hard to bypass accidentally.
+`ReplaceDomain` is intentionally identity-relevant and must not silently retain ownership verification.
 
 ---
 
-# 3. Required operations
+## 2. Base invalid cases
 
-## ParseEmail
+Every implementation must account for:
 
-Input:
+```text
+I1 raw email sent directly
+I2 syntax-valid but unverified email sent
+I3 verification from email A used for email B
+I4 verified email changed afterward
+I5 stale verification
+I6 wrong account/scope
+I7 missing network_send capability
+```
+
+Compile-time rejection and runtime rejection are recorded separately.
+
+---
+
+## 3. Base benchmark result so far
+
+The executed TypeScript baseline demonstrated that ordinary strict TypeScript can already make several important invalid states unavailable through normal typed API use:
 
 ```text
 RawEmail
+SyntaxValidEmail
+VerifiedEmail
 ```
 
-Success establishes:
+and can deliberately provide domain-specific runtime diagnostics for freshness/scope.
+
+Therefore Aytham may **not** claim that conventional languages can only provide generic type errors for this workflow.
+
+See:
 
 ```text
-email_syntax_valid
+EVIDENCE.md
+COMPARISON.md
 ```
 
-Failure returns a syntax error.
+Rust has an implementation with unit/compile-fail tests, but local Rust execution remains unavailable; repository CI is configured to execute it.
 
-## VerifyOwnership
+The Aytham base model remains paper semantics only.
 
-Input requires:
+---
+
+## 4. Orthogonal-facts extension
+
+The first comparison revealed a sharper question: what happens when several facts are independent rather than one linear typestate?
+
+The extension is specified in:
 
 ```text
-email_syntax_valid
+ORTHOGONAL_FACTS.md
 ```
 
-Inputs include:
+Four facts are tracked for one email subject:
 
 ```text
-account_id
-verification time
-evidence id
-```
-
-Success establishes ownership verification scoped to that account and exact email value.
-
-## ReplaceDomain
-
-Changes:
-
-```text
-person@example.org
-```
-
-into another syntactically valid address.
-
-This transformation is intentionally identity-relevant and therefore must **not silently preserve** ownership verification.
-
-Its output should require re-verification.
-
-## NormalizeDisplay
-
-An optional benchmark extension may perform a transformation that is defined to preserve semantic email identity.
-
-If included, the implementation must make the preservation rule explicit enough to compare with Aytham's future `preserves` concept.
-
-## SendSensitiveMessage
-
-Requires:
-
-```text
-email_syntax_valid
 ownership_verified
-verification scope == target account
-verification still fresh
-network_send capability
-```
-
-Produces:
-
-```text
-DeliveryReceipt
-```
-
----
-
-# 4. Mandatory invalid cases
-
-Every implementation must show how it handles these seven cases.
-
-## I1 — Raw text sent directly
-
-```text
-RawEmail -> SendSensitiveMessage
-```
-
-Expected: rejected before sensitive send.
-
-## I2 — Syntax-valid but ownership-unverified
-
-```text
-ParseEmail -> SendSensitiveMessage
-```
-
-Expected: rejected because ownership has not been established.
-
-## I3 — Verification belongs to another email value
-
-```text
-A verified
-B unverified
-send B using A's verification
-```
-
-Expected: rejected or unrepresentable without an explicit unsafe bypass.
-
-## I4 — Verified value mutated afterward
-
-```text
-verify person@example.org
-replace domain -> person@attacker.example
-send
-```
-
-Expected: ownership verification must not silently survive.
-
-## I5 — Stale verification
-
-```text
-now > expires_at
-```
-
-Expected: rejected with a freshness/expiry reason.
-
-## I6 — Wrong account/scope
-
-```text
-verification scope = user-42
-send requires       user-77
-```
-
-Expected: rejected with a scope mismatch reason.
-
-## I7 — Missing network-send capability
-
-The address is valid and verified, but the calling context has no network-send permission.
-
-Expected: rejected before effect execution.
-
----
-
-# 5. Valid case
-
-```text
-raw input
-  ↓ ParseEmail
-syntax-valid email
-  ↓ VerifyOwnership(account=user-42)
-verified email for user-42
-  ↓ SendSensitiveMessage(
-        account=user-42,
-        now <= expires_at,
-        network_send capability)
-DeliveryReceipt
-```
-
----
-
-# 6. Baseline constraints
-
-## TypeScript
-
-Use ordinary TypeScript mechanisms only.
-
-Permitted techniques include:
-
-- branded types;
-- discriminated unions;
-- classes/interfaces;
-- opaque construction through module/private fields where practical;
-- explicit runtime checks;
-- capability tokens.
-
-Do not invent an Aytham-like graph framework inside the TypeScript baseline merely to make comparison symmetrical.
-
-## Rust
-
-Use ordinary stable Rust mechanisms only.
-
-Permitted techniques include:
-
-- newtypes;
-- private fields/constructors;
-- ownership/moves;
-- enums/Result;
-- typestate-like structs;
-- capability tokens.
-
-Do not add a theorem prover, macro framework, or external verification library.
-
-## Aytham candidate
-
-Only after the two conventional baselines exist, model the same requirements using the current candidate:
-
-```text
-Subject / Value Identity
-Relation / Role
-Claim
-Action / Transformation
-Composition Judgment
-```
-
-with optional provenance/scope/freshness/effects.
-
-Do not change the benchmark requirements to fit Aytham.
-
----
-
-# 7. Measurement rubric
-
-For each implementation record:
-
-## Safety
-
-- Which invalid cases are compile-time impossible?
-- Which require runtime checks?
-- Which can be bypassed accidentally through ordinary API use?
-
-## Ceremony
-
-Count/describe:
-
-- wrapper/newtype declarations;
-- state-specific types;
-- annotations;
-- explicit metadata required at normal call sites;
-- helper functions required to maintain invariants.
-
-Raw line count may be reported but is not the primary metric.
-
-## Independent facts
-
-Assess how naturally the implementation scales if additional orthogonal claims are added, such as:
-
-```text
 marketing_consent
 mfa_verified
-age_verified
 jurisdiction_allowed
 ```
 
-Does the design require combinatorial wrapper/state types?
-
-## Lineage / invalidation
-
-How clearly does the implementation prevent an established fact from migrating to a changed value?
-
-## Provenance / scope / freshness
-
-Can the program explain:
+Three actions require different subsets:
 
 ```text
-who/what established this?
-for which value?
-for which account?
-when?
-until when?
+SendSecurityAlert
+    ownership_verified + mfa_verified
+
+SendMarketingMessage
+    ownership_verified + marketing_consent
+
+SendRegulatedNotice
+    ownership_verified + jurisdiction_allowed
 ```
 
-without turning every simple property into heavyweight metadata?
+The extension also tests:
 
-## Effects
+```text
+RevokeMarketingConsent
+```
 
-How visible is the `network_send` requirement at the API boundary?
-
-## Diagnostics
-
-Evaluate failures for:
-
-- missing ownership verification;
-- stale verification;
-- wrong scope;
-- verification invalidated by changed value;
-- missing effect capability.
-
-Distinguish compiler diagnostics from deliberately designed application/runtime diagnostics.
-
-## Progressive disclosure
-
-Does ordinary syntax validation remain simple, or does the model force full provenance/effect machinery everywhere?
+which must remove only marketing consent while preserving the other independent facts.
 
 ---
 
-# 8. Benchmark integrity rules
+## 5. Strong conventional baseline rule
 
-1. The TypeScript and Rust versions are real baselines, not straw men.
-2. Aytham does not receive extra semantic information that the baseline problem statement did not provide.
-3. Compile-time impossibility and runtime validation must be reported separately.
-4. A runtime error message written manually in TypeScript/Rust counts as a deliberate diagnostic capability and must not be dismissed.
-5. Aytham must pay for its metadata and concepts in the ceremony evaluation.
-6. Aytham does not pass merely because its IR contains more information.
-7. If conventional code is clearer overall, the Aytham mechanism must be revised.
-8. No implementation is reported as tested until it is actually executed.
+The benchmark does not force TypeScript/Rust into one named wrapper for every possible state combination.
+
+The conventional extensions deliberately use strong ordinary generic/marker models:
+
+```text
+TypeScript
+EmailFacts<O, M, F, J>
+
+Rust
+EmailFacts<O, M, F, J>
+```
+
+This avoids a straw-man `2^N` family of named types.
 
 ---
 
-# 9. Planned artifacts
+## 6. Orthogonal extension result so far
+
+### TypeScript — executed
+
+Strict compilation and runtime execution succeeded.
+
+The implementation demonstrated:
+
+- different actions can require different static fact subsets;
+- fact kinds are not interchangeable;
+- revoking marketing consent preserves ownership/MFA/jurisdiction dimensions;
+- stale MFA blocks the security action but not the marketing action;
+- jurisdiction mismatch is diagnosed independently;
+- a second email starts with no copied fact state.
+
+Most importantly:
+
+> **Conventional typestate does not inherently require combinatorial named wrapper classes.**
+
+The generic-state TypeScript baseline falsifies that weak argument.
+
+### Rust — implementation complete, execution pending
+
+A corresponding marker-generic crate exists under:
+
+```text
+rust-orthogonal/
+```
+
+with unit tests and `compile_fail` doctests.
+
+Do not report it as passing until CI/local Rust execution is directly inspected.
+
+### Aytham — paper model only
+
+The Aytham extension is documented in:
+
+```text
+aytham/orthogonal-model.md
+```
+
+It represents the facts as an open claim environment rather than a closed Boolean/marker tuple.
+
+No executable Aytham guarantee is demonstrated yet.
+
+See:
+
+```text
+ORTHOGONAL_EVIDENCE.md
+ORTHOGONAL_COMPARISON.md
+```
+
+---
+
+## 7. What the benchmark has falsified
+
+Do not justify Aytham with:
+
+> Conventional languages require one wrapper type for every combination of independent facts.
+
+The benchmark shows that generic/marker state dimensions avoid this.
+
+Do not justify Aytham merely with:
+
+> A value can carry validated facts.
+
+Refinements, typestate, proof/evidence values and ordinary application structures already do this.
+
+---
+
+## 8. Surviving Aytham hypothesis
+
+The comparison has narrowed the research target to two properties.
+
+### Open claim environment
+
+Can new semantic claims be introduced without editing a central state tuple and without threading unrelated generic parameters through existing APIs?
+
+Conceptually:
+
+```text
+subject
+  + claim A
+  + claim B
+  + claim C
+  + ...
+```
+
+with actions declaring only the claims they require.
+
+### Shared semantic matcher and explanation
+
+Can one bounded semantic checker derive from declarations:
+
+```text
+missing claim
+wrong subject
+wrong scope
+stale claim
+wrong claim value
+invalidated claim history
+missing capability
+```
+
+without each action implementing equivalent custom validation/diagnostic logic?
+
+These are hypotheses, not demonstrated wins.
+
+---
+
+## 9. New comparison obligation
+
+The open-claim idea now needs a stronger conventional comparison than the Boolean/marker tuple alone.
+
+Before implementing the Aytham validator, compare against:
+
+```text
+independent proof-token APIs
+row-polymorphic / extensible-record approaches
+effect-row/open-set techniques where relevant
+```
+
+A conventional API can pass only the proofs an action requires, avoiding unrelated generic dimensions entirely.
+
+Aytham must survive that comparison before its open claim environment is treated as a language contribution.
+
+---
+
+## 10. Benchmark integrity rules
+
+1. Conventional baselines must be strong, ordinary designs—not straw men.
+2. Aytham receives no extra problem information.
+3. Static and runtime guarantees are reported separately.
+4. Handwritten TypeScript/Rust diagnostics count as real baseline capability.
+5. Aytham pays for metadata, matching rules, lineage and provenance machinery.
+6. More semantic information in an IR is not itself a win.
+7. No test is reported as passing until actually executed.
+8. A falsified Aytham argument must be removed rather than defended.
+9. Path planning remains outside this benchmark.
+
+---
+
+## 11. Current artifact map
 
 ```text
 benchmarks/001-verified-sensitive-email/
   README.md
+  EVIDENCE.md
+  COMPARISON.md
+
+  ORTHOGONAL_FACTS.md
+  ORTHOGONAL_EVIDENCE.md
+  ORTHOGONAL_COMPARISON.md
 
   typescript/
     benchmark.ts
+    benchmark.test.ts
+    orthogonal.ts
+    orthogonal.test.ts
     tsconfig.json
 
   rust/
     Cargo.toml
     src/lib.rs
 
+  rust-orthogonal/
+    Cargo.toml
+    src/lib.rs
+
   aytham/
     semantic-model.md
-    graph.json          # only if the candidate actually needs it
-
-  COMPARISON.md         # written after all three models exist
+    orthogonal-model.md
 ```
 
-The file plan is provisional except for this benchmark specification.
+CI:
+
+```text
+.github/workflows/benchmark-001.yml
+```
 
 ---
 
-# 10. Current activity
+## 12. Current evidence state
 
-Implement the TypeScript and Rust baselines without changing these benchmark requirements.
+```text
+TypeScript base               COMPILED + EXECUTED
+TypeScript orthogonal         COMPILED + EXECUTED
+Rust base                     IMPLEMENTED / EXECUTION PENDING
+Rust orthogonal               IMPLEMENTED / EXECUTION PENDING
+Aytham base                   PAPER MODEL
+Aytham orthogonal             PAPER MODEL
+```
 
-Only then model the Aytham candidate and perform the comparison.
+---
+
+## 13. Next activity
+
+Do **not** implement the Aytham validator yet.
+
+The next evidence gate is:
+
+> **Open Claim Environment Comparison**
+
+Compare the surviving Aytham claim-environment hypothesis against:
+
+1. an ordinary independent proof-token design;
+2. row-polymorphic/extensible-record prior art and representative modelling;
+3. effect-row/open-set techniques where they overlap.
+
+Focus on:
+
+```text
+adding new claim kinds
+requiring only local subsets
+subject identity
+scope/freshness
+independent invalidation
+provenance/history
+generated diagnostics
+```
+
+Only after that comparison should the project decide whether a minimal executable Aytham requirement matcher has earned implementation.
