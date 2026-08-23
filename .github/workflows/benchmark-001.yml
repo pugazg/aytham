@@ -1,0 +1,51 @@
+name: Benchmark 001
+
+on:
+  push:
+    paths:
+      - "benchmarks/001-verified-sensitive-email/**"
+      - ".github/workflows/benchmark-001.yml"
+  pull_request:
+    paths:
+      - "benchmarks/001-verified-sensitive-email/**"
+      - ".github/workflows/benchmark-001.yml"
+  workflow_dispatch:
+
+jobs:
+  typescript:
+    name: TypeScript baseline
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Compile strict TypeScript baseline
+        run: >-
+          npx --yes -p typescript@5.9.2
+          tsc -p benchmarks/001-verified-sensitive-email/typescript/tsconfig.json
+
+      - name: Run TypeScript runtime checks
+        run: >-
+          node benchmarks/001-verified-sensitive-email/typescript/dist/benchmark.test.js
+
+  rust:
+    name: Rust baseline
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Show Rust toolchain
+        run: |
+          rustc --version
+          cargo --version
+
+      - name: Run Rust unit and compile-fail doc tests
+        run: >-
+          cargo test
+          --manifest-path benchmarks/001-verified-sensitive-email/rust/Cargo.toml
