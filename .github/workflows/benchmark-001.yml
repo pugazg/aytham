@@ -49,7 +49,12 @@ jobs:
           rustc --version
           cargo --version
 
-      - name: Run Rust unit and compile-fail doc tests
+      - name: Run Rust original unit and compile-fail doc tests
         run: >-
           cargo test
           --manifest-path benchmarks/001-verified-sensitive-email/rust/Cargo.toml
+
+      - name: Run Rust orthogonal-facts unit and compile-fail doc tests
+        run: >-
+          cargo test
+          --manifest-path benchmarks/001-verified-sensitive-email/rust-orthogonal/Cargo.toml
