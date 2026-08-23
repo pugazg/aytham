@@ -1,268 +1,418 @@
 # Aytham Roadmap
 
-Status: **research-first roadmap**
+Status: **research-first / evidence-gated roadmap**
 
-The project should not skip directly from naming to compiler implementation. Each phase has an exit condition.
+Authoritative reset reference: `docs/AYTHAM_DIRECTION_RESET_2026-08-23.md`
 
-## Phase 0 — Research foundation
-
-**Goal:** establish the question Aytham is trying to answer.
-
-Work:
-
-- document Tamil programming-language prior art;
-- document relevant computational Tamil grammar work;
-- map Tolkāppiyam concepts without claiming direct equivalence;
-- define evidence labels: SOURCE / INTERPRETATION / AYTHAM DESIGN;
-- identify closest non-Tamil programming-language concepts;
-- maintain an originality/overlap matrix;
-- research name/trademark separately from technical novelty.
-
-Exit criteria:
-
-- no foundational claim depends on keyword translation;
-- at least three serious computational hypotheses are defined;
-- prior-art gaps are explicitly listed;
-- novelty wording remains appropriately provisional.
-
-**Current status: ACTIVE.**
+Aytham must not advance merely because another experiment can be described. Each stage has an evidence gate, and planned architecture must never be presented as implemented behaviour.
 
 ---
 
-## Phase 1 — Paper semantics
+# Current position — 2026-08-23
 
-**Goal:** demonstrate a useful semantic core without committing to surface syntax.
+A full repository review after Experiments 001–034 found:
 
-Prototype on paper/data structures:
+- the Tamil-source research foundation is strong;
+- ActionFrame, semantic roles, claim lineage, checked composition, and meaning-oriented diagnostics remain promising;
+- modern programming-language prior-art comparison is incomplete;
+- several later prototype documents moved ahead of executable evidence;
+- the live implementation is currently only `prototype/validator/aytham_validator.py`, a minimal claim-requirement checker;
+- transformation discovery and path search are design-only and are now paused.
 
-1. `peyar` — denotable entity/value;
-2. `vinai` — transformation/action/effect;
-3. `uri` — qualification/refinement, now also being tested as evidence-bearing contextual knowledge;
-4. role relation inspired by `vēṟṟumai`;
-5. composition law inspired by `puṇarcci`;
-6. resolved contextual meaning (`poruḷ`, terminology still reviewable);
-7. semantic lineage/versioning for facts established about changing values.
-
-Required examples:
-
-- bank/account transfer — **Experiment 001 recorded**;
-- validated data pipeline — **Experiment 002 recorded**;
-- state/protocol transition — next semantic stress test;
-- pure vs effectful transformation;
-- at least one Tamil-text/Unicode example.
-
-Exit criteria:
-
-- three examples show a measurable safety/readability/composition benefit;
-- comparison with Rust/TypeScript/Python or another relevant language is documented;
-- concepts that merely rename existing constructs are removed or narrowed;
-- a small-step or equivalent executable semantic description is possible.
-
-**Current status: ACTIVE in parallel with Phase 0 research.**
+No Experiment 035 path-search implementation is authorized during the reset phase.
 
 ---
 
-## Phase 2 — Core language specification 0.1
+# Phase 0 — Research foundation
 
-**Goal:** freeze the first minimal language semantics.
+**Goal:** establish the question Aytham is trying to answer without forcing Tamil grammatical categories into compiler terminology.
 
-Specify:
+Core work:
+
+- Tamil programming-language prior art;
+- direct Tolkāppiyam source study;
+- Nannūl and commentary comparison;
+- explicit source/commentary/interpretation/Aytham-design provenance;
+- complete 27-iyal anti-selection-bias survey;
+- modern PL comparison;
+- novelty wording discipline.
+
+## Current assessment
+
+**SUBSTANTIALLY COMPLETE as foundation, but modern prior-art depth remains incomplete.**
+
+Strongly retained findings:
+
+- `vinai = function` rejected;
+- `idai = generic control flow` rejected;
+- `uri = refinement type` reopened;
+- `Eccaviyal = compiler inference` withdrawn;
+- semantic roles are Aytham design inspired by relation/case research, not copied grammatical cases;
+- punarcci inspires boundary-sensitive joining only as a modern design question;
+- ActionFrame research is strengthened by Nannūl/commentarial evidence but remains a modern computational invention.
+
+## Remaining Phase-0 gate
+
+Complete focused comparison against:
+
+- semantic roles / thematic roles;
+- Fillmore-style case grammar;
+- frame semantics;
+- knowledge graphs;
+- graph rewriting;
+- Hoare-style contracts;
+- refinement/dependent typing;
+- typestate/session/protocol types;
+- effect/capability systems;
+- provenance-aware programming;
+- rule systems / logic programming;
+- automated planning;
+- proof search / type-directed synthesis.
+
+**Exit condition:** we can state precisely what Aytham changes relative to the closest established techniques and what empirical result would falsify each retained mechanism.
+
+---
+
+# Phase 1 — Semantic Kernel Candidate
+
+**Goal:** define and challenge the smallest useful semantic layer before treating it as language architecture.
+
+Current candidate:
+
+```text
+Subject / Value Identity
+Relation / Role
+Claim
+Action / Transformation
+Composition Judgment
+```
+
+Supporting structures when needed:
+
+```text
+Evidence
+Context
+Authority
+Confidence / epistemic status
+Provenance / lineage
+```
+
+Current Action/Transformation contract under test:
+
+```text
+participants
+requires
+establishes
+preserves
+invalidates
+effects
+capabilities
+```
+
+## Important boundary
+
+Aytham must not become a universal knowledge ontology.
+
+The semantic layer should enrich ordinary programming rather than requiring simple arithmetic, loops, or algorithms to be represented as large semantic graphs.
+
+## Exit condition
+
+The kernel survives a serious comparison with conventional alternatives and remains compact enough for progressive disclosure.
+
+---
+
+# Phase 1A — Focused prior-art comparison — CURRENT
+
+**Goal:** test the kernel against its nearest neighbours before adding more architecture.
+
+Required output:
+
+For each retained Aytham mechanism record:
+
+```text
+problem solved
+closest established technique
+semantic overlap
+Aytham difference
+expected benefit
+measurement method
+falsification condition
+```
+
+Priority mechanisms:
+
+1. contextual semantic roles;
+2. ActionFrame as programmer-facing operation contract;
+3. independent claims attached to value lineage;
+4. establish/preserve/invalidate semantics;
+5. semantic boundary composition;
+6. meaning-oriented diagnostics.
+
+No new path-planning, syntax, compiler, or backend work belongs here.
+
+---
+
+# Phase 1B — Comparative Benchmark 001
+
+**Goal:** obtain executable comparative evidence rather than another conceptual case study.
+
+## Benchmark
+
+Verified sensitive-email workflow.
+
+Model the same problem in:
+
+1. TypeScript;
+2. Rust;
+3. Aytham Semantic Kernel Candidate.
+
+Required concerns:
+
+```text
+email_syntax_valid
+ownership_verified
+verification scope
+verification freshness
+value mutation / lineage invalidation
+network_send effect
+```
+
+Required invalid cases:
+
+1. raw text sent directly;
+2. parsed but ownership-unverified email;
+3. evidence belonging to another value;
+4. verified value mutated afterward;
+5. stale verification;
+6. wrong verification scope/account;
+7. network effect attempted without permitted capability/context.
+
+Measure:
+
+- invalid states prevented;
+- annotation/ceremony;
+- wrapper/type proliferation;
+- API readability;
+- diagnostic quality;
+- provenance explanation;
+- mutation invalidation clarity;
+- progressive-disclosure burden.
+
+## Pass condition
+
+Aytham demonstrates a material advantage on at least one important dimension without imposing disproportionate complexity elsewhere.
+
+## Fail/revise condition
+
+If established approaches express the same guarantees more clearly and economically, revise or remove the Aytham mechanism.
+
+---
+
+# Phase 1C — Critical benchmark review
+
+After Benchmark 001:
+
+- identify which Aytham mechanisms actually earned their complexity;
+- remove mechanisms that merely rename existing constructs;
+- decide whether provenance/freshness/authority belong in the everyday model or only optional layers;
+- decide whether Action and Transformation remain separate concepts;
+- decide whether Relation is fundamental or can be represented more simply;
+- reassess whether a new programming language is justified.
+
+**Exit condition:** publish a revised Semantic Kernel Candidate with accepted/rejected mechanisms and explicit evidence.
+
+---
+
+# Phase 1D — Minimal executable semantic validator
+
+Only after the benchmark gate, build the smallest real validator corresponding to the surviving kernel.
+
+Expected implementation may include:
+
+```text
+prototype/
+  validator/
+    semantic_graph.py
+    validator.py
+    explanation.py
+  examples/
+  tests/
+```
+
+But filenames are not commitments until the benchmark determines what the kernel actually needs.
+
+Implementation rules:
+
+- no claim that code exists until it is present on `main`;
+- no claim that tests pass unless tests were executed;
+- every behaviour must correspond to an accepted semantic rule;
+- explanations are outputs, not decorative logging.
+
+Exit criteria:
+
+- executable fixtures exist;
+- automated tests exist and run;
+- invalid cases fail for the intended semantic reason;
+- explanations expose the missing role/claim/evidence/effect accurately;
+- ordinary cases remain lightweight.
+
+---
+
+# Phase 2 — Core language specification 0.1
+
+**BLOCKED until Phase 1D succeeds.**
+
+Goal: decide whether the surviving semantic kernel justifies a programming language and integrate it with ordinary computation.
+
+A future specification must account for at least:
 
 - values and literals;
+- expressions;
 - binding/identity;
-- semantic categories;
-- role system;
-- qualification/refinement/evidence system, if Experiment 002 survives comparison;
-- transformations/effects;
-- composition;
+- action/transformation invocation;
+- role/relationship semantics if retained;
+- claims/requirements if retained;
 - branching/choice;
-- failure/error;
-- scope/lifetime at a minimal level;
-- module boundary;
+- repetition or recursion;
+- failure/result semantics;
+- state and effects;
+- module boundaries;
 - Unicode/source rules.
 
-Do **not** add classes, macros, generics, async, package management, or metaprogramming unless the semantic core requires them.
+Do not add classes, macros, generics, async, package management, or metaprogramming unless the semantic core requires them.
 
 Exit criteria:
 
 - every construct has defined semantics;
 - invalid programs have defined rejection reasons;
+- ordinary computation is not forced into knowledge-graph ceremony;
 - examples can be evaluated manually from the spec;
 - terminology has source/design provenance notes.
 
 ---
 
-## Phase 3 — Surface syntax exploration
+# Phase 3 — Surface syntax exploration
 
-**Goal:** find syntax that naturally expresses the semantic model.
+**BLOCKED.**
 
-Build multiple competing syntaxes rather than adopting the first attractive Tamil keyword set.
+Experiment 011 remains historical evidence that:
 
-Explore:
+- role-labelled action notation is the strongest current human-facing candidate;
+- graph/triple notation is more suitable as semantic IR/debugging form;
+- Tamil sentence-like notation is worth later study but must not control meaning;
+- progressive disclosure is mandatory.
 
-- Tamil-first syntax;
-- minimal-symbol syntax;
-- bilingual/alias surface;
-- role markers;
-- explicit vs inferred uri;
-- expression-oriented layout;
-- block delimiters vs indentation;
-- ASCII accessibility where necessary.
+Only after Specification 0.1 should competing surfaces be tested:
 
-Usability tests:
+- Tamil-first;
+- bilingual/alias;
+- minimal-symbol;
+- role-marked;
+- block/indentation alternatives;
+- ASCII-accessible alternatives where needed.
 
-- Tamil-speaking beginner;
-- experienced Tamil-speaking programmer;
-- programmer unfamiliar with Tamil reading code through tooling/translation views;
-- mixed-team library interop.
-
-Exit criteria:
-
-- syntax makes role/qualification/composition semantics clearer rather than hiding them;
-- Unicode input burden is understood;
-- formatting/parser ambiguities are resolved;
-- syntax 0.1 is documented with grammar.
+No Tamil keyword is frozen today.
 
 ---
 
-## Phase 4 — Reference interpreter
+# Phase 4 — Reference interpreter
 
-**Goal:** executable correctness model.
+**BLOCKED.**
+
+Goal: executable correctness model for Specification 0.1.
 
 Priorities:
 
-- simple implementation;
-- exhaustive tests;
-- readable diagnostics;
+- clarity;
+- conformance tests;
 - semantic trace mode;
+- meaning-oriented diagnostics;
 - no optimization pressure.
 
-Candidate implementation languages should be compared before selection.
-
-The interpreter should expose internal reasoning useful for research, for example:
-
-```text
-form → category → role → qualification/evidence → effect → composition → result
-```
-
-Exit criteria:
-
-- specification examples execute;
-- invalid examples fail for the specified reason;
-- Unicode tests are comprehensive;
-- role/refinement/composition diagnostics are demonstrably useful.
-
 ---
 
-## Phase 5 — Formalization and semantic audit
+# Phase 5 — Formalization and semantic audit
 
-**Goal:** ensure the model is coherent before optimizing it.
+**BLOCKED.**
 
-Work may include:
+Potential work:
 
 - formal grammar;
-- type/role judgments;
-- qualification/evidence judgments;
+- semantic judgments;
+- role/relation judgments;
+- claim/requirement judgments;
 - effect rules;
 - composition laws;
-- lineage/preservation/invalidation rules;
+- preservation/invalidation rules;
 - soundness properties where applicable;
-- property-based tests;
-- fuzzing;
+- property-based testing/fuzzing;
 - independent design review.
-
-Exit criteria:
-
-- major semantic contradictions resolved;
-- known unsound/unsafe areas documented;
-- behaviour is not defined only by the reference interpreter implementation.
 
 ---
 
-## Phase 6 — Compiler/backend prototype
+# Phase 6 — Compiler/backend prototype
 
-**Goal:** compile Aytham programs while preserving reference semantics.
+**BLOCKED.**
 
-Evaluate backends:
+Only after interpreter semantics stabilize, evaluate:
 
 - WebAssembly;
 - LLVM;
 - C transpilation;
 - custom bytecode/VM;
-- another IR.
+- another IR/backend.
 
-Selection criteria:
-
-- implementation complexity;
-- debugging/source maps;
-- FFI/interoperability;
-- portability;
-- optimization;
-- runtime requirements.
-
-Exit criteria:
-
-- compiled output matches interpreter semantics on conformance tests;
-- errors remain source-level and meaning-oriented;
-- backend details do not leak into language semantics unnecessarily.
+Backend choice must not redefine source semantics.
 
 ---
 
-## Phase 7 — Interoperability
+# Phase 7 — Interoperability
 
-**Goal:** make Aytham practically usable without abandoning its model.
+**BLOCKED.**
 
-Targets may include:
+Potential targets:
 
 - C ABI;
 - WebAssembly host APIs;
-- JSON;
-- HTTP;
-- filesystem;
-- environment/process;
+- JSON/HTTP;
+- filesystem/process;
 - database clients;
-- calling or wrapping existing libraries.
+- foreign libraries.
 
-Research question:
+Critical research question:
 
-> How are Aytham roles, uri qualifications/evidence, and effects represented when crossing into languages that do not understand them?
-
-Exit criteria:
-
-- safe FFI boundary rules;
-- explicit loss-of-guarantee diagnostics where needed;
-- usable real-world example application.
+> How are semantic roles, claims, guarantees, and effects represented when crossing into languages that do not understand them?
 
 ---
 
-## Phase 8 — Tooling
+# Phase 8 — Tooling
 
-**Goal:** make semantic information visible to programmers.
+**BLOCKED.**
 
-Build:
+Potential tooling:
 
 - formatter;
 - syntax highlighting;
 - LSP;
-- hover showing category/role/uri/evidence/effect;
-- semantic diagnostics;
-- provenance trace for established qualifications;
+- semantic hover;
+- provenance trace;
+- meaning-oriented diagnostics;
 - rename/refactor;
 - test runner;
-- documentation generator;
+- docs generator;
 - REPL/playground.
-
-Aytham's tooling should make the new semantic model easier to understand than reading the formal specification.
 
 ---
 
-## Phase 9 — Standard library
+# Phase 9 — Standard library
 
-**Goal:** demonstrate the model through disciplined APIs.
+**BLOCKED.**
 
-Initial library candidates:
+Only after the language core stabilizes.
 
-- text/Unicode;
+Potential areas:
+
+- Unicode/text;
 - collections;
 - result/error;
 - filesystem;
@@ -271,34 +421,77 @@ Initial library candidates:
 - JSON;
 - testing.
 
-The standard library should be the strongest demonstration of role-safe, qualification-aware, evidence-aware, effect-explicit API design.
-
 ---
 
-## Phase 10 — Ecosystem and release
+# Phase 10 — Ecosystem and release
 
-Only after the language core is stable:
+**BLOCKED.**
+
+Only after semantic, implementation, and interoperability maturity:
 
 - package format;
 - dependency resolution;
 - registry strategy;
-- semantic versioning policy;
+- semantic versioning;
 - compatibility policy;
-- language governance;
+- governance;
 - security process;
 - release channels;
-- documentation/tutorials;
-- benchmark suite.
+- tutorials;
+- benchmarks.
 
 ---
 
-# Near-term work queue
+# Paused research branch — Transformation discovery / path planning
 
-1. Deepen prior-art research, especially refinement types, typestate, proof-carrying data/code, effect/capability systems, provenance systems, and dataflow languages.
-2. Build a concept-by-concept source notebook for வேற்றுமை, பெயர், வினை, இடை, உரி, புணர்ச்சி from the controlling Tolkāppiyam source and clearly separate source meaning from Aytham invention.
-3. **Experiment 001 complete as a paper design:** role-safe transfer model. Next: formal comparison against conventional alternatives.
-4. **Experiment 002 complete as a paper design:** validated data flow. Next: test evidence-bearing uri, lineage, preservation/invalidation, and path sensitivity against established techniques.
-5. Design **Experiment 003 — state/protocol transition** only after enough comparison work is recorded to prevent blindly recreating typestate.
-6. Decide whether `poruḷ` is the right Aytham term for resolved computational meaning.
-7. Draft a minimal machine-readable semantic graph schema shared by Experiments 001–003.
-8. Only after these: draft `SPEC_0_1.md`.
+Experiments 029–034 remain preserved as exploratory history.
+
+Status: **PAUSED**.
+
+Do not resume until:
+
+1. the semantic kernel is benchmarked;
+2. transformation pre/postconditions are formally stable;
+3. the state model supports simultaneous facts/relations/capabilities/effects;
+4. prior art in planning, rule systems, graph rewriting, proof search, and type-directed synthesis is compared directly;
+5. a real programming problem demonstrates that automatic path discovery is needed.
+
+Path planning is not required to prove the core language idea.
+
+---
+
+# Immediate work queue
+
+1. Keep `docs/AYTHAM_DIRECTION_RESET_2026-08-23.md` authoritative for current status.
+2. Complete the focused modern prior-art comparison for the Semantic Kernel Candidate.
+3. Prepare Benchmark 001 with explicit TypeScript, Rust, and Aytham comparison criteria.
+4. Execute the benchmark rather than writing further implementation-plan experiments.
+5. Perform a critical benchmark review.
+6. Freeze/revise the kernel only after evidence.
+7. Then implement the smallest real validator and automated tests.
+8. Only afterward reconsider Specification 0.1.
+
+---
+
+# Governing principle
+
+Aytham advances through:
+
+```text
+problem
+→ prior art
+→ hypothesis
+→ falsification test
+→ comparative evidence
+→ decision
+→ implementation
+```
+
+not:
+
+```text
+idea
+→ planning document
+→ next experiment number
+→ assumed maturity
+```
