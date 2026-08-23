@@ -39,6 +39,12 @@ interface JurisdictionFact extends BoundFact {
   readonly expiresAtMs: number;
 }
 
+export type OrthogonalFactName =
+  | "ownership_verified"
+  | "marketing_consent"
+  | "mfa_verified"
+  | "jurisdiction_allowed";
+
 /**
  * O = ownership_verified present
  * M = marketing_consent present
@@ -198,12 +204,12 @@ export class EmailFacts<
 export type OrthogonalSendError =
   | {
       kind: "subject_mismatch";
-      fact: "ownership_verified" | "marketing_consent" | "mfa_verified" | "jurisdiction_allowed";
+      fact: OrthogonalFactName;
       message: string;
     }
   | {
       kind: "scope_mismatch";
-      fact: "ownership_verified" | "marketing_consent" | "mfa_verified" | "jurisdiction_allowed";
+      fact: OrthogonalFactName;
       expectedAccountId: AccountId;
       actualAccountId: AccountId;
       message: string;
@@ -246,9 +252,7 @@ export interface OrthogonalDeliveryReceipt {
 
 function validateBoundFact(
   email: SyntaxValidEmail,
-  factName: OrthogonalSendError extends { kind: "subject_mismatch"; fact: infer N }
-    ? N
-    : never,
+  factName: OrthogonalFactName,
   fact: BoundFact,
   requiredAccountId: AccountId,
 ): OrthogonalSendError | null {
