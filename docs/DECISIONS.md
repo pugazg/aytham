@@ -358,3 +358,173 @@ REJECTED
 ```
 
 This is a modern Aytham design inspired by the structural idea of rule-governed joining. It is not a claim that Tamil grammatical punarcci is software composition.
+
+---
+
+## D-0023 — Full-repository direction reset becomes authoritative
+
+**Date:** 2026-08-23  
+**Status:** Accepted
+
+After a full review of the live repository, `docs/AYTHAM_DIRECTION_RESET_2026-08-23.md` becomes the authoritative current-state review.
+
+Older experiment documents remain historical research records, but they do not override current implementation truth or current research gates.
+
+If an older document describes proposed work using implementation language, the live repository and the reset document control the current status.
+
+---
+
+## D-0024 — Aytham advances through evidence gates, not experiment numbers
+
+**Date:** 2026-08-23  
+**Status:** Accepted
+
+Numbered planning documents are not evidence of maturity.
+
+The governing progression is now:
+
+```text
+real programming problem
+→ closest prior art
+→ falsifiable Aytham hypothesis
+→ comparative benchmark
+→ critical review
+→ decision
+→ implementation
+```
+
+A new experiment document is justified only when it records new evidence, a genuinely new falsifiable question, or a decision-producing test.
+
+---
+
+## D-0025 — Semantic Kernel Candidate is intentionally small
+
+**Date:** 2026-08-23  
+**Status:** Experimental direction
+
+The current kernel candidate is reduced to:
+
+```text
+Subject / Value Identity
+Relation / Role
+Claim
+Action / Transformation
+Composition Judgment
+```
+
+Supporting structures may include:
+
+```text
+Evidence
+Context
+Authority
+Confidence / epistemic status
+Provenance / lineage
+```
+
+These supporting structures are not automatically peer-level language primitives.
+
+The goal is to prevent Aytham from becoming a universal ontology rather than a programming language.
+
+---
+
+## D-0026 — Transformation discovery and semantic path search are paused
+
+**Date:** 2026-08-23  
+**Status:** PAUSED
+
+Experiments 029–034 are retained as exploratory design history, but no further path-search implementation is authorized now.
+
+Reasons:
+
+1. A real semantic state contains multiple simultaneous claims, relations, capabilities, contexts, and effects.
+2. A simple `Claim A → Transformation → Claim B` graph is insufficient as a general action model.
+3. The project has not yet completed direct comparison with automated planning, rule systems, graph rewriting, proof search, workflow models, or type-directed synthesis.
+4. Path search is not required to prove the central Aytham language hypothesis.
+
+No Experiment 035 path-search work should proceed until a later explicit decision reopens it.
+
+---
+
+## D-0027 — Live implementation truth must be stated explicitly
+
+**Date:** 2026-08-23  
+**Status:** Accepted
+
+The live implementation currently consists only of:
+
+```text
+prototype/validator/aytham_validator.py
+```
+
+It performs basic claim-requirement matching and returns simple explanations.
+
+It does not currently implement the broader `SemanticGraph`, transformation, provenance, lineage, path-search, fixture, or automated-test architecture described in later planning documents.
+
+Future project reporting must distinguish:
+
+```text
+DESIGNED
+IMPLEMENTED
+EXECUTED/TESTED
+```
+
+No test may be reported as passing unless it was actually run.
+
+---
+
+## D-0028 — Comparative Benchmark 001 precedes further validator architecture
+
+**Date:** 2026-08-23  
+**Status:** Accepted
+
+The next major evidence gate is a verified sensitive-email workflow modeled in:
+
+1. TypeScript;
+2. Rust;
+3. the Aytham Semantic Kernel Candidate.
+
+The comparison must include:
+
+- syntax validity;
+- ownership verification;
+- verification scope;
+- verification freshness;
+- value mutation/lineage invalidation;
+- network-send effects/capabilities;
+- deliberately invalid cases.
+
+Evaluate:
+
+- invalid states prevented;
+- annotation burden;
+- wrapper/type proliferation;
+- API readability;
+- diagnostic quality;
+- provenance explanation;
+- mutation invalidation clarity;
+- progressive-disclosure burden.
+
+Further validator architecture is justified only after this benchmark and critical review identify which Aytham mechanisms actually earn their complexity.
+
+---
+
+## D-0029 — Aytham must remain a programming-language research project, not silently become a workflow/knowledge engine
+
+**Date:** 2026-08-23  
+**Status:** Accepted
+
+Aytham's semantic layer may borrow techniques from knowledge representation, provenance, workflows, rules, and graph systems, but the project must preserve a coherent path to ordinary programming constructs such as:
+
+- values;
+- expressions;
+- binding;
+- choice;
+- repetition/recursion;
+- failure/results;
+- state/effects;
+- modules.
+
+The semantic contract layer should enrich ordinary computation rather than force every computation into a knowledge graph.
+
+A future language specification remains blocked until the semantic kernel demonstrates comparative value.
