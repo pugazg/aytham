@@ -2,9 +2,11 @@
 
 **A research-first project exploring whether Tamil grammatical thought can inspire a genuinely useful programming-language model.**
 
-> Status: **Research / pre-specification**
+> Status: **Research / pre-specification — direction reset active**
 >
-> No claim is yet made that Aytham is the first Tolkāppiyam-inspired programming language. Novelty claims remain provisional until prior-art and source research are substantially complete.
+> Authoritative current-state review: [`docs/AYTHAM_DIRECTION_RESET_2026-08-23.md`](docs/AYTHAM_DIRECTION_RESET_2026-08-23.md)
+>
+> No claim is made that Aytham is the first Tolkāppiyam-inspired programming language. Novelty claims remain provisional until prior-art and source research are substantially complete.
 
 ## Core question
 
@@ -25,7 +27,116 @@ The project does **not** claim that Tolkāppiyam or Nannūl describes modern com
 
 The name is a **working project identity**, not a declaration of trademark clearance.
 
-## Current research model
+---
+
+# Current project reset — 2026-08-23
+
+A full review of the live repository after Experiments 001–034 found that the **research direction remains promising**, but the recent implementation sequence moved ahead of its own evidence gates.
+
+The project is therefore pausing new path-search/planning work and returning to:
+
+```text
+problem
+→ prior art
+→ falsifiable hypothesis
+→ comparative benchmark
+→ critical review
+→ decision
+→ implementation
+```
+
+rather than advancing through experiment numbers alone.
+
+## Current implementation truth
+
+The live implementation currently consists only of:
+
+```text
+prototype/validator/aytham_validator.py
+```
+
+It is a minimal research validator that:
+
+- indexes claims by subject/property;
+- finds an action by ID;
+- checks whether required claims exist with matching values;
+- returns a simple success/failure explanation.
+
+It does **not** yet implement:
+
+- a full `SemanticGraph` object model;
+- relation validation;
+- confidence ordering;
+- provenance/evidence reasoning;
+- lineage preservation/invalidation;
+- transformation execution;
+- transformation discovery;
+- semantic path search;
+- example JSON fixtures;
+- automated tests.
+
+Older prototype documents that describe these components remain **design history**, not evidence that they are implemented.
+
+---
+
+# Strongest current computational hypothesis
+
+The strongest surviving direction is an **action/relation/claim semantic contract model** rather than a generic ontology.
+
+A deliberately small kernel candidate is now under test:
+
+```text
+Subject / Value Identity
+Relation / Role
+Claim
+Action / Transformation
+Composition Judgment
+```
+
+Supporting structures may be introduced only when needed:
+
+```text
+Evidence
+Context
+Authority
+Confidence / epistemic status
+Provenance / lineage
+```
+
+An Action/Transformation may eventually expose:
+
+```text
+participants
+requires
+establishes
+preserves
+invalidates
+effects
+capabilities
+```
+
+This remains **paper semantics / experimental architecture**, not an accepted language specification.
+
+## Why this direction remains interesting
+
+The potential value is not that any one ingredient is new. The individual ingredients have extensive prior art.
+
+The research opportunity is whether Aytham can make:
+
+```text
+roles
++ established claims
++ provenance/lineage when relevant
++ effects/capabilities
++ checked semantic composition
++ meaning-oriented diagnostics
+```
+
+one coherent everyday programmer-facing model without excessive annotation burden.
+
+---
+
+# Relationship to Tamil grammatical research
 
 The early organizing frame remains useful:
 
@@ -39,119 +150,157 @@ The early organizing frame remains useful:
 
 but it is **not** treated as a mapping to lexer → parser → semantic analyser.
 
-Direct source study has also made the project more cautious about treating `பெயர் / வினை / இடை / உரி` as four modern programming categories. They are now research perspectives whose historical relationships must be understood before any terminology is frozen.
+Direct source study has also made the project more cautious about treating `பெயர் / வினை / இடை / உரி` as four modern programming categories.
 
-The strongest current computational hypothesis is an **action-centred semantic relation graph**:
+### வேற்றுமை
 
-```text
-                         action
-                           │
-          ┌────────────────┼────────────────┐
-          │                │                │
-   participant roles   circumstances   temporal context
-          │                │                │
-          └────────────────┼────────────────┘
-                           │
-                  qualification claims
-                    / evidence / scope
-                           │
-                    effects + lineage
-                           │
-                  checked composition
-```
+Inspires research into **first-class semantic role relations**.
 
-A transformation may therefore eventually be described by relationships such as:
+Aytham roles are a modern invention, not grammatical cases copied into software.
+
+### வினை
+
+Inspires action/transformation research.
+
+Direct Tolkāppiyam/Nannūl study shows the historical category is deeply connected with grammatical and temporal structure, so:
 
 ```text
-requires
-establishes
-preserves
-invalidates
-effects
-capabilities
-produces
+vinai = function
 ```
 
-This remains **paper semantics**, not accepted language architecture.
+is rejected.
 
-### Current source-inspired research terms
+### இடை
 
-- **வேற்றுமை** — inspires research into first-class semantic role relations; Aytham roles are a modern invention, not grammatical cases copied into software.
-- **வினை** — inspires action/transformation research; direct Tolkāppiyam/Nannūl study shows the historical category is deeply connected with temporal and grammatical structure, so `vinai = function` is rejected.
-- **இடை** — currently researched as **semantic mediation/connection**, not as a Tamil label for `if`, pipes, punctuation, or generic control flow.
-- **உரி** — terminology is **reopened**. Experiment 002 uses the neutral modern term **qualification claim** because direct source study shows `uri` is broader than a simple refinement predicate.
-- **புணர்ச்சி** — inspires **boundary-sensitive checked composition**; it is not treated as a historical theory of software composition.
-- **பெயர்** — remains a research perspective for denotable semantic subjects/entities, not a frozen AST node type.
+Currently researched as **semantic mediation/connection**, not as a Tamil label for:
 
-## What prior-art comparison changed
+```text
+if
+pipes
+punctuation
+generic control flow
+```
 
-Experiment 002 was compared against refinement types, typestate, dependent types, proof-carrying approaches, effect systems, SSA/value lineage, provenance systems, and related work.
+### உரி
 
-The conclusion is deliberately conservative:
+Terminology remains **reopened**.
+
+Direct source study shows `uri` is broader than a simple refinement predicate. Paper semantics therefore use the neutral modern term **qualification claim** where such a programming construct is being tested.
+
+### புணர்ச்சி
+
+Inspires **boundary-sensitive checked composition**.
+
+It is not treated as a historical theory of software composition.
+
+### பெயர்
+
+Remains a research perspective for denotable semantic subjects/entities, not a frozen AST node type.
+
+---
+
+# What prior-art comparison changed
+
+Experiment 002 compared the validated-data-flow hypothesis with:
+
+- refinement types;
+- typestate;
+- dependent types;
+- proof-carrying approaches;
+- effect systems;
+- SSA/value lineage;
+- provenance systems;
+- language-integrated provenance;
+- protocol/session typing.
+
+The conclusion remains deliberately conservative:
 
 > **Individual mechanism novelty is low.**
 
-The research opportunity is whether Aytham can make **role + qualification/evidence + provenance + lineage + effects + composition** one coherent programmer-facing meaning model, with unusually strong diagnostics and tooling.
+Aytham must therefore prove practical value through integration, developer ergonomics, diagnostics, and composition rather than merely combining known mechanisms.
 
-Combination alone does not establish novelty. It must demonstrate practical value.
+The next prior-art pass must go deeper into:
 
-## What source study changed
+- semantic roles / thematic roles;
+- Fillmore-style case grammar;
+- frame semantics;
+- knowledge graphs;
+- graph rewriting;
+- Hoare-style contracts;
+- rule systems / logic programming;
+- automated planning;
+- proof search;
+- type-directed synthesis.
 
-The project now surveys **all 27 Tolkāppiyam iyals**, rather than selecting only concepts that conveniently resemble programming.
+---
 
-Direct source reading has already corrected several early assumptions:
+# What source study changed
+
+The project surveys **all 27 Tolkāppiyam iyals**, rather than selecting only concepts that conveniently resemble programming.
+
+Direct source reading corrected several early assumptions:
 
 - `uri = refinement type` is no longer accepted;
 - `idai = generic control flow` is rejected;
-- the early `Eccaviyal → compiler inference` analogy is withdrawn pending full source study;
+- the early `Eccaviyal → compiler inference` analogy is withdrawn;
 - `vinai` is not equated with an arbitrary effectful function;
 - `punarcci` is studied as a model of rule-governed boundaries rather than translated phonology;
-- பொருளதிகாரம் concepts have a deliberately higher bar because forced analogy risk is especially high.
+- பொருளதிகாரம் concepts have a deliberately higher bar because forced-analogy risk is especially high.
 
 The first-pass 27-iyal survey is retained as research history; later corrections are recorded explicitly in `TOLKAPPIYAM_27_IYAL_SURVEY_ERRATA.md` rather than silently erasing earlier hypotheses.
 
-## Nannūl comparison and commentary
+---
 
-Nannūl has entered the research set as a **later comparative grammar**, not as an authority to be back-projected into Tolkāppiyam.
+# Nannūl comparison and commentary
 
-The first comparison strengthens three research directions:
+Nannūl entered the research set as a **later comparative grammar**, not as an authority to be back-projected into Tolkāppiyam.
+
+The strongest useful research outcomes have been:
 
 1. **action-centred relation frames**;
-2. **idai as mediation**;
-3. **boundary-sensitive composition with general and context-dependent rules**.
+2. **idai as mediation/dependence**;
+3. **boundary-sensitive composition with general and context-dependent rules**;
+4. edition-aware source provenance;
+5. the distinction between explicit, inferred, derived, and contextual relations.
 
-Commentarial study now includes two Tamil Virtual Academy sources supplied for the project:
+Commentarial study includes:
 
-- **Mayilaināthar commentary**, TVA's `நன்னூல் மூலமும் மயிலைநாதருரையும்`;
+- **Mayilaināthar commentary**;
 - **Śaṅkara Namaccivāyar's Virutti commentary revised by Sivajñāna Munivar**.
 
-The commentary pass adds two important requirements:
+Nannūl numbering is treated as edition-aware. For example, the same rule may appear as 319 or 320 depending on edition/commentary tradition. Aytham therefore identifies source rules by:
 
-- semantic relations should be able to record whether they were **explicit, inferred, derived, or contextual**;
-- Nannūl provenance must be **edition-aware**, because the same rule can carry different nūṟpā numbers across editions/commentarial traditions.
+```text
+incipit
++ edition/commentary
++ local number
++ printed page/source
+```
 
-For example, the opening punarcci definition appears as 150 in the Mayilaināthar/U. Vē. Cā. presentation but 151 in common TVA numbering, while the action-frame rule appears as 319 versus 320. Aytham therefore identifies source rules by **incipit + edition/commentary + local number + page/source**, never by bare number alone.
+rather than by bare number alone.
 
-`uri` and `eccam` terminology remain provisional.
+---
 
-## Sangam literature
+# Sangam literature
 
-Sangam literature is planned as a different evidence layer:
+Sangam literature remains a different evidence layer:
 
 > **attested usage and contextual stress-testing**, especially before Aytham borrows anything from திணை or other பொருளதிகாரம் concepts.
 
-It will not be treated as another grammar manual or mined for attractive programming metaphors.
+It is not another grammar manual and should not be mined for attractive programming metaphors.
 
-Potential later uses include:
+Potential research uses include:
 
 - contextual interpretation;
 - participant/relation recovery;
 - explicit vs implicit evidence;
 - ambiguity;
-- tiṇai in actual literary usage;
-- genuinely Tamil computational example programs.
+- provenance-aware textual computation;
+- genuinely Tamil computational example domains.
 
-## What Aytham must NOT become
+---
+
+# What Aytham must NOT become
 
 Aytham should not be only this:
 
@@ -164,18 +313,139 @@ print    → அச்சிடு
 
 Nor should it claim that modern programming concepts are directly present in ancient or medieval grammar.
 
-Every Tamil-inspired feature must remain separable into:
+It also must not silently become only a knowledge graph, provenance database, or workflow engine.
+
+A future programming language must still provide a coherent account of ordinary computation:
+
+- values/literals;
+- expressions;
+- binding;
+- action/transformation invocation;
+- choice;
+- repetition/recursion;
+- failure/results;
+- state/effects;
+- modules.
+
+The semantic layer should enrich ordinary computation rather than force every calculation or algorithm into a large semantic graph.
+
+---
+
+# Meaning-oriented diagnostics
+
+One of the strongest practical hypotheses remains developer-facing explanation.
+
+Instead of only:
 
 ```text
-historical source
-commentarial / scholarly interpretation
-modern programming-language prior art
-Aytham design invention
+Expected VerifiedEmail
+Found EmailAddress
 ```
 
-## Principles
+Aytham aims to test diagnostics such as:
 
-1. **Research before implementation.** Compiler code follows semantic clarity.
+```text
+SendSensitiveMessage cannot execute.
+
+Required:
+    ownership_verified
+
+Established:
+    email_syntax_valid
+
+The ownership requirement is not established
+for this value lineage.
+```
+
+A registered bridge transformation may be suggested only when its own prerequisites are satisfied and the system can explain why it applies.
+
+Diagnostic quality is part of the semantic research, not later polish.
+
+---
+
+# Progressive disclosure
+
+Aytham must not require provenance-heavy declarations for trivial computation.
+
+Simple code should remain simple.
+
+Evidence, authority, context, confidence, freshness, lineage, and other advanced structures should become visible only when the problem actually depends on them.
+
+This is a core pass/fail criterion for the entire design.
+
+---
+
+# Current paused direction — transformation path search
+
+Experiments 029–034 explored transformation discovery and semantic path search.
+
+That direction is now **PAUSED**.
+
+Reason:
+
+A realistic semantic state may contain multiple simultaneous claims, relations, capabilities, contexts, and effects. A simple:
+
+```text
+Claim A
+  → Transformation
+  → Claim B
+```
+
+model is insufficient as a general action semantics.
+
+Before path planning can resume, the project must complete direct comparison with planning, rule systems, graph rewriting, workflow models, proof search, and type-directed synthesis—and demonstrate a real programming need for automatic path discovery.
+
+Path search is not required to prove the core Aytham language hypothesis.
+
+---
+
+# Current evidence gate
+
+The immediate goal is **not** a compiler and not another path-search experiment.
+
+The project is currently at:
+
+## Phase 1A — Focused prior-art comparison
+
+followed by:
+
+## Phase 1B — Comparative Benchmark 001
+
+The benchmark will model a verified sensitive-email workflow in:
+
+1. TypeScript;
+2. Rust;
+3. the Aytham Semantic Kernel Candidate.
+
+It must test:
+
+```text
+email_syntax_valid
+ownership_verified
+verification scope
+verification freshness
+value mutation / lineage invalidation
+network_send effect
+```
+
+and compare:
+
+- invalid states prevented;
+- annotation/ceremony;
+- wrapper/type proliferation;
+- API readability;
+- diagnostic quality;
+- provenance explanation;
+- mutation invalidation clarity;
+- progressive-disclosure burden.
+
+Only after this benchmark and a critical review should the project decide which semantic mechanisms deserve real implementation.
+
+---
+
+# Principles
+
+1. **Meaning before syntax.** Compiler keywords do not define the research model.
 2. **Tamil-inspired, not Tamil-decorated.** A borrowed concept must affect reasoning or behaviour.
 3. **Source-grounded.** Historical claims require traceable evidence.
 4. **No forced analogies.** Attractive but weak mappings are explicitly held or rejected.
@@ -184,12 +454,21 @@ Aytham design invention
 7. **Unicode-native.** Tamil source must receive correct normalization, grapheme-aware diagnostics, and mixed-script safety.
 8. **Tamil-first, interoperable.** A Tamil conceptual model must not isolate programmers from existing ecosystems.
 9. **Explicit provenance.** Source, commentary, modern scholarship, interpretation, and Aytham invention remain distinct.
-10. **Meaning-oriented diagnostics are part of the language.** Errors should explain missing relationships, evidence, effects, or composition conditions in domain terms.
+10. **Meaning-oriented diagnostics are part of the language hypothesis.**
+11. **Progressive disclosure.** Ordinary code must not require semantic bureaucracy.
+12. **Evidence before architecture.** Planned components are not implementation progress.
+13. **Falsification before attachment.** Every feature needs a condition under which it will be removed or revised.
 
-## Research map
+---
+
+# Repository map
 
 ```text
 docs/
+  AYTHAM_DIRECTION_RESET_2026-08-23.md
+  DECISIONS.md
+  ROADMAP.md
+
   research/
     PRIOR_ART.md
     RESEARCH_QUESTIONS.md
@@ -201,48 +480,67 @@ docs/
     NANNUL_COMMENTARY_NOTEBOOK_002.md
     NANNUL_SOURCE_CONCORDANCE.md
     EXPERIMENT_002_COMPARATIVE_ANALYSIS.md
+    AYTHAM_RESEARCH_BASELINE_v0.1.md
+    AYTHAM_BASELINE_CRITICAL_REVIEW_v0.1.md
+    AYTHAM_SEMANTIC_MODEL_v0.1.md
+    AYTHAM_SEMANTIC_MODEL_v0.2.md
     SOURCE_EXPANSION_POLICY.md
 
   experiments/
     001_ROLE_GRAPH_TRANSFER.md
     002_VALIDATED_DATA_FLOW.md
+    ...
 
-  design/
-    DESIGN_PRINCIPLES.md
-    COMPUTATIONAL_MODEL.md
+  specification/
+    experimental semantic-model documents
 
-  DECISIONS.md
-  ROADMAP.md
+  prototype/
+    historical prototype/design experiments
+
+prototype/
+  validator/
+    aytham_validator.py
 ```
 
-## Current milestone
+The folders `specification/` and `prototype/` contain experimental research artifacts; their names do not mean the project has reached a frozen language specification or mature runtime.
 
-**Milestone 0 — Research foundation / paper semantics**
+---
 
-Current work:
+# Current maturity
 
-1. deepen the complete Sollatikāram source notebook;
-2. extend the Nannūl cross-edition concordance and commentarial comparison;
-3. extend prior-art comparison into semantic roles, case grammar, frame semantics, knowledge graphs, graph rewriting, and type-directed synthesis/planning;
-4. test whether an **action frame** is better than a conventional function signature for several unrelated programming problems;
-5. study Eḻuttatikāram composition-rule architecture;
-6. conduct a Poruḷatikāram anti-analogy review before borrowing contextual concepts;
-7. then introduce bounded Sangam literature as attested-usage/context evidence;
-8. only after these decide which Tamil technical terms belong in Specification 0.1.
+```text
+Tamil-source research foundation              STRONG / CONTINUE
+Historical/source provenance discipline       STRONG / CONTINUE
+Modern PL prior-art comparison                 PARTIAL / DEEPEN
+ActionFrame hypothesis                         PROMISING / TEST
+Semantic roles                                 PROMISING / TEST
+Claim lineage/provenance                       PROMISING / TEST
+Boundary-sensitive composition                 PROMISING / TEST
+Meaning-oriented diagnostics                   PROMISING / TEST
+Canonical semantic graph                       EXPERIMENTAL
+Python validator                               MINIMAL PROTOTYPE
+Automated test suite                           NOT IMPLEMENTED
+Transformation discovery                       DESIGN ONLY / PAUSED
+Semantic path search                           DESIGN ONLY / PAUSED
+Aytham language specification                  NOT READY
+Surface syntax                                 NOT FROZEN
+Compiler/runtime                               NOT STARTED
+```
 
-Success still requires at least one abstraction that proves measurably useful compared with conventional alternatives.
+---
 
-## Source discipline
+# Governing research rule
 
-Research records distinguish:
+For every major next step ask:
 
-- **SOURCE** — directly supported by a cited primary text;
-- **COMMENTARY** — attributed traditional/commentarial interpretation;
-- **MODERN SCHOLARSHIP** — linguistic/computational/programming-language research;
-- **INTERPRETATION** — a reasoned comparison or reading;
-- **AYTHAM DESIGN** — a modern programming-language invention inspired by the research.
-
-Later sources such as Nannūl must never be silently projected backward into Tolkāppiyam.
+```text
+What real programming problem is being solved?
+What established technique already addresses it?
+What exactly does Aytham change?
+How will that difference be tested?
+What result would cause us to reject the idea?
+Only then: what should we implement?
+```
 
 ## License
 
