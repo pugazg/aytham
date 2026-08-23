@@ -29,9 +29,13 @@ jobs:
           npx --yes -p typescript@5.9.2
           tsc -p benchmarks/001-verified-sensitive-email/typescript/tsconfig.json
 
-      - name: Run TypeScript runtime checks
+      - name: Run TypeScript original runtime checks
         run: >-
           node benchmarks/001-verified-sensitive-email/typescript/dist/benchmark.test.js
+
+      - name: Run TypeScript orthogonal-facts checks
+        run: >-
+          node benchmarks/001-verified-sensitive-email/typescript/dist/orthogonal.test.js
 
   rust:
     name: Rust baseline
